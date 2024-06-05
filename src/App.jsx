@@ -6,6 +6,9 @@ import Title from "./components/Title/title";
 import About from "./components/About/About";
 import Hero from "./components/Hero/Hero";
 import Customer from "./components/Customer/Customer";
+import Map from "./components/Map/Map";
+import Footer from "./components/Footer/Footer";
+
 const App = () => {
   return (
     <div>
@@ -18,9 +21,12 @@ const App = () => {
         <Title
           subTitle="CUSTOMER SPEAK"
           title="SplashWheels is the highest rated and most searched pure water and online booking brand in India!
-Still not sure? Here is a glimpse of our raving reviews!"
+          Still not sure? Here is a glimpse of our raving reviews!"
         />
         <Customer />
+        <Map/>
+        <Footer/>
+
       </div>
     </div>
   );
