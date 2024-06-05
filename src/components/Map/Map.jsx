@@ -2,8 +2,8 @@ import React from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
+import './Map.css';
 
-// Fix the default icon issue with webpack
 delete L.Icon.Default.prototype._getIconUrl;
 
 L.Icon.Default.mergeOptions({
@@ -14,17 +14,19 @@ L.Icon.Default.mergeOptions({
 
 const LeafletMap = ({ center, zoom, markers }) => {
     return (
-        <MapContainer center={center} zoom={zoom} style={{ height: '100vh', width: '100%' }}>
-            <TileLayer
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            />
-            {markers.map((marker, index) => (
-                <Marker key={index} position={marker.position}>
-                    <Popup>{marker.popupText}</Popup>
-                </Marker>
-            ))}
-        </MapContainer>
+        <div className="leaflet-map-container">
+            <MapContainer center={center} zoom={zoom} className="leaflet-map">
+                <TileLayer
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                />
+                {markers.map((marker, index) => (
+                    <Marker key={index} position={marker.position}>
+                        <Popup>{marker.popupText}</Popup>
+                    </Marker>
+                ))}
+            </MapContainer>
+        </div>
     );
 };
 
@@ -46,13 +48,13 @@ const App = () => {
         },
         {
             position: [51.521, -0.12],
-            popupText: 'Marker 3'
+            popupText: 'Marker 4'
         }
     ];
 
     return (
-        <div className="App ">
-            <h1 className="py-50 text-center">CITIES WE DELIVER TO</h1>
+        <div className="app-container">
+            <h1 className="app-title">CITIES WE DELIVER TO</h1>
             <LeafletMap center={mapCenter} zoom={mapZoom} markers={mapMarkers} />
         </div>
     );

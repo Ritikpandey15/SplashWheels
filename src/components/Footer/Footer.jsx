@@ -1,7 +1,5 @@
-// src/components/Footer.js
-
 import React from 'react';
-import './Footer.css'; // Assuming you have a CSS file for styling the footer
+import './Footer.css'; 
 
 const Footer = () => {
   return (
